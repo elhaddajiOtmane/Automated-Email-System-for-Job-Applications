@@ -3,10 +3,15 @@ import csv
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Email server setup
-my_email = 'your_email@gmail.com'
-password = 'your_password'
+my_email = os.getenv('EMAIL')
+password = os.getenv('PASSWORD')
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login(my_email, password)
